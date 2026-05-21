@@ -283,22 +283,26 @@ export default function App() {
 
   // Format UNIX timestamp adjusted to city local time offset
   const getCityLocalTime = (offsetSeconds) => {
-    const utcDate = new Date().getTime() + new Date().getTimezoneOffset() * 60000;
-    const cityDate = new Date(utcDate + offsetSeconds * 1000);
+    const utcTime = Date.now();
+    const cityTime = utcTime + offsetSeconds * 1000;
+    const cityDate = new Date(cityTime);
     return cityDate.toLocaleTimeString("en-US", {
       hour: "2-digit",
       minute: "2-digit",
       hour12: true,
+      timeZone: "UTC",
     });
   };
 
   const getCityLocalDate = (offsetSeconds) => {
-    const utcDate = new Date().getTime() + new Date().getTimezoneOffset() * 60000;
-    const cityDate = new Date(utcDate + offsetSeconds * 1000);
+    const utcTime = Date.now();
+    const cityTime = utcTime + offsetSeconds * 1000;
+    const cityDate = new Date(cityTime);
     return cityDate.toLocaleDateString("en-US", {
       weekday: "long",
       month: "short",
       day: "numeric",
+      timeZone: "UTC",
     });
   };
 
