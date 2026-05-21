@@ -52,7 +52,7 @@ export default function App() {
 
   // Load default city on initial render
   useEffect(() => {
-    fetchWeatherData(40.7128, -74.0060, "ahmedabad", "IN", "Ahmedabad");
+    fetchWeatherData(23.0225, 72.5714, "Ahmedabad", "IN", "Gujarat");
   }, []);
 
   // Fetch suggestions when user types (debounced)
@@ -120,7 +120,7 @@ export default function App() {
     setError("");
     setSuggestions([]);
     setQuery("");
-    setFocusedIndex(-1);
+    setFocusedIndex(-1);          
 
     try {
       const [weatherRes, forecastRes] = await Promise.all([
@@ -343,7 +343,7 @@ export default function App() {
       case "Ash":
       case "Squall":
       case "Tornado":
-        return <Wind size={size} className={`text-teal-200 animate-pulse ${className}`} />;
+        return <Sun size={size} className={`text-teal-200 animate-pulse ${className}`} />;
       default:
         return <Sun size={size} className={`text-amber-400 ${className}`} />;
     }
